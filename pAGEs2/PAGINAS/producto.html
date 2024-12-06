@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del Producto</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header>
+    <div class="logo">
+      <a href="index.html">Volver a Inicio</a>
+    </div>
+  </header>
+
+  <section class="product-details">
+    <div class="product-detail">
+      <img id="product-image" src="" alt="Producto">
+      <div class="product-info">
+        <h2 id="product-name"></h2>
+        <p id="product-desc"></p>
+        <p class="price" id="product-price"></p>
+        <button id="add-to-cart">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Arcadium Clothes. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="particles-config.js"></script>
+
+  <script>
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('name');
+    const productPrice = urlParams.get('price');
+    const productDesc = urlParams.get('desc');
+    const productImage = urlParams.get('image');
+
+    // Actualizar contenido dinámico
+    document.getElementById('product-name').textContent = productName || "Producto No Disponible";
+    document.getElementById('product-price').textContent = productPrice ? `$${productPrice}` : "Precio No Disponible";
+    document.getElementById('product-desc').textContent = productDesc || "Descripción No Disponible";
+    document.getElementById('product-image').src = productImage || "PAGINAS/IMAGENES2/SPOILER_16_sin_titulo_20231227215825.png";
+
+    // Agregar al carrito
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+      alert(`${productName} agregado al carrito`);
+    });
+  </script>
+</body>
+</html>
